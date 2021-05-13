@@ -1,0 +1,127 @@
+<style>.modal-dialog {max-width: 800px;} </style>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" style="font-size: 17px;"><i class="fas fa-user-plus" style="margin-right: 5px; font-size: 17px;"></i> Add a New Mentor</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="mail">Mail</label>
+                        <div class="input-group">
+                            <input type="email" id="mail" name="mail" class="form-control"
+                              required minlength="0" [(ngModel)]="mail">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="validateMail(mail)" type="button">Validate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label style="color: white;"> .</label>
+                        <div>
+                        <label *ngIf="validate == 'true'"><i class="far fa-check-circle" style="color: #42ba96"></i> Email is available</label>
+                        <label *ngIf="validate == 'false'"><i class="far fa-times-circle" style="color: #df4759"></i> Email is not available</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Civility</label>
+                        <div class="input-group">
+                            <div class="form-check" style="display: flex; flex-direction: row; align-items: center; margin-right: 10px;">
+                                <input class="form-check-input" type="radio" value="Mr" [checked]="{true: civility == Mr}" name="Mr" id="Mr" [(ngModel)]="civility">
+                                <label class="form-check-label" for="Mr">Mr.</label>
+                            </div>
+                            <div class="form-check" style="display: flex; flex-direction: row; align-items: center;">
+                                <input class="form-check-input" type="radio" value="Mrs" [checked]="{true: civility == Mrs}" name="Mrs" id="Mrs" [(ngModel)]="civility">
+                                <label class="form-check-label" for="Mrs">Mrs.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control"
+                              required minlength="0" [(ngModel)]="first_name">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control"
+                              required minlength="0" [(ngModel)]="last_name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Office Phone</label>
+                        <input disabled type="text" id="phone" name="phone" class="form-control"
+                              required minlength="0" [(ngModel)]="phone">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Direct Line</label>
+                        <input disabled type="text" id="direct_line" name="direct_line" class="form-control"
+                              required minlength="0" [(ngModel)]="direct_line">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Mobile Phone</label>
+                        <input disabled type="text" id="mobile_phone" name="mobile_phone" class="form-control"
+                              required minlength="0" [(ngModel)]="mobile_phone">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Select Entity</label>
+                        <select class="form-control" aria-label="Default select example"  name="entity" id="entity"[(ngModel)]="entity">
+                            <option selected>Open this select menu</option>
+                            <option value="Company">Company</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Select Company</label>
+                        <select disabled class="form-control" aria-label="Default select example" name="company" id="company" [(ngModel)]="company">
+                            <option selected>Open this select menu</option>
+                            <option value="Mcdonald">Mcdonald</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Select User Type</label>
+                        <select class="form-control" aria-label="Default select example" name="user_type" id="user_type" [(ngModel)]="user_type">
+                            <option selected>Open this select menu</option>
+                            <option value="HR">HR</option>
+                            <option value="Mentor">Mentor</option>  
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" type="submit" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+    </div>
+  </ng-template>
+  
+  <i class="fas fa-pen" (click)="open(content)" style="font-size: 16px; cursor:pointer;margin-right: 10px;"></i>

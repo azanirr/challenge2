@@ -1,0 +1,27 @@
+.addBtn {
+    box-sizing: border-box;
+    background-color:#e2e82c;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+.modal-dialog{
+    max-width: 800px;
+}
+.modal-body {
+    label {
+        font-size: 12px;
+    }
+    .form-control{
+        font-size: 12px;
+        padding: 10px;
+        height: 100%;
+    }
+    .btn{
+        padding: 10px;
+        font-size: 12px;
+    }
+}

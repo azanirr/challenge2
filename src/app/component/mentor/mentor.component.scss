@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+}
+
+.container {
+    padding: 20px;
+    .button{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-bottom: 40px;
+        .reset {
+            box-sizing: border-box;
+            background-color: #398c9e;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            color: white;
+            margin-right: 10px;
+        }
+        .addBtn {
+            box-sizing: border-box;
+            background-color:#e2e82c;
+            display: flex;
+            align-items: center;
+            padding: 5px 20px;
+            border: none;
+            cursor: pointer;
+            color: black;
+        }
+    }
+}
+
+.modal-dialog {
+    max-width: 800px;
+}

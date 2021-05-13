@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="button">
+        <button class="reset"><i class="fas fa-undo" style="margin-right: 5px;"></i> Reset</button>
+        <ngbd-modal-basic (req)="addTask($event)" modalDialogClass="modal-dialog" [dataSource]="dataSource"></ngbd-modal-basic>
+    </div>
+    <div>
+        <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="user type">
+                <th mat-header-cell *matHeaderCellDef> User Type </th>
+                <td mat-cell *matCellDef="let element"> {{element?.company?.user_type}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="entity">
+                <th mat-header-cell *matHeaderCellDef> Entity </th>
+                <td mat-cell *matCellDef="let element"> {{element?.company?.name}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element?.user_status}} </td>
+            </ng-container> 
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <ngbd-modal-edit-basic [dataSource]="element" (req)="edit($event)"></ngbd-modal-edit-basic>
+                    <i class="far fa-envelope" style="font-size: 16px; cursor:pointer; margin-right: 10px;"></i>
+                    <i class="fas fa-times" style="font-size: 16px; cursor:pointer;"></i>
+                </td>
+            </ng-container>
+            
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>           
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+    </div>
+</div>
